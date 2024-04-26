@@ -62,6 +62,26 @@ function RootLayoutNav() {
       <Stack.Screen
         name="upload"
         options={{
+          gestureDirection: 'horizontal',
+          header: () => <View className="h-28 bg-megb-blue-primary flex-row items-center justify-between">
+            <View className="w-10">
+              <Link href="/" asChild>
+                <Pressable>
+                  {({ pressed }) => (
+                    <Ionicons
+                      name="arrow-back"
+                      size={30}
+                      color="#FFF0CE"
+                      style={{ paddingLeft: 15, opacity: pressed ? 0.5 : 1 }}
+                    />
+                  )}
+                </Pressable>
+              </Link>
+            </View>
+            <View className="flex-1 flex-row justify-center"><Header /></View>
+            <View className="w-10" />
+          </View>,
+          // headerTitle: () => ,
           headerStyle: {
             backgroundColor: '#0C356A',
           },

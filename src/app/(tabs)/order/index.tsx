@@ -5,7 +5,7 @@ import apisos from "@/services/apisos";
 import { Ionicons } from "@expo/vector-icons";
 import ListOrder from "@/components/ListOrder";
 import { StatusBar } from "expo-status-bar";
-import { Link, router } from "expo-router";
+import { Link } from "expo-router";
 import ordersc from "@/schemas/ordersc";
 
 const Order = () => {
