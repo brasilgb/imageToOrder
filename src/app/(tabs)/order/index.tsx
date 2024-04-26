@@ -5,7 +5,7 @@ import apisos from "@/services/apisos";
 import { Ionicons } from "@expo/vector-icons";
 import ListOrder from "@/components/ListOrder";
 import { StatusBar } from "expo-status-bar";
-import { router } from "expo-router";
+import { Link, router } from "expo-router";
 import ordersc from "@/schemas/ordersc";
 
 const Order = () => {
@@ -81,7 +81,17 @@ const Order = () => {
             )}
           </Formik>
         </View>
-        
+
+        <Link href="/upload" asChild>
+          <Pressable>
+            <Ionicons
+              name="camera"
+              size={30}
+              color="#000"
+            />
+          </Pressable>
+        </Link>
+
         <ListOrder data={dataOrder} />
 
       </View>
