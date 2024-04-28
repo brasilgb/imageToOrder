@@ -3,5 +3,6 @@ import { ptForm } from "yup-locale-pt";
 Yup.setLocale(ptForm);
 
 export default Yup.object().shape({
-    order: Yup.string().required("Digite o número da ordem")
+    email: Yup.string().required("Digite o e-mail"),
+    password: Yup.string().required("Digite a senha")
 });

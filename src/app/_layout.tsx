@@ -1,12 +1,14 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useFonts } from 'expo-font';
-import { Link, Stack } from 'expo-router';
+import { Link, router, Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import "@/styles/global.css";
 import { Pressable, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Header from "@/components/header";
+import AuthProvider from '@/contexts/Auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -22,6 +24,7 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
@@ -47,39 +50,36 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
 
-  return (
-    <Stack
-      screenOptions={{
+  const [onSetUser, setOnSetUser] = useState<any>(null);
 
-        headerTitleAlign: 'center',
-        headerBackVisible: false,
-        headerStyle: {
-          backgroundColor: "#0C356A",
-        },
-      }}
-    >
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen
-        name="upload"
-        options={{
-          headerStyle: {
-            backgroundColor: '#0C356A',
-          },
-          headerLeft: () => (
-            <Link href="/" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <Ionicons
-                    name="arrow-back"
-                    size={30}
-                    color="#FFF0CE"
-                    style={{ opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }} />
-    </Stack>
+  useEffect(() => {
+    const usrLogged = async () => {
+      const user: any = await AsyncStorage.getItem("Auth_user");
+      setOnSetUser(!!user);
+    };
+    usrLogged();
+  }, [AsyncStorage]);
+
+  useEffect(() => {
+    const verifyUser = async () => {
+  
+      if (!onSetUser) {
+        router.replace("/signin");
+      }else{
+        router.replace("/(tabs)/")
+      }
+ 
+    };
+    verifyUser();
+  }, [router, onSetUser]);
+  return (
+    <AuthProvider>
+      <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="signin" options={{ headerShown: false }} />
+        <Stack.Screen name="upload" options={{ presentation: 'modal', headerShown: false }} />
+        <Stack.Screen name="information" options={{ presentation: 'modal', headerShown: false }} />
+      </Stack>
+    </AuthProvider>
   );
 }

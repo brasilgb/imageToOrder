@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
+import { Link, router, Tabs } from 'expo-router';
 import { Pressable, View } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 import { Image, Text } from "react-native";
 import Header from "@/components/header";
+import { AuthContext } from '@/contexts/Auth';
 
 
 const TabLayout = () => {
