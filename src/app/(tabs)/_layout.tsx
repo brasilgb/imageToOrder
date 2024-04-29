@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, router, Tabs } from 'expo-router';
 import { Pressable, View } from 'react-native';
@@ -9,7 +9,7 @@ import { AuthContext } from '@/contexts/Auth';
 
 
 const TabLayout = () => {
-
+const {signOut} = useContext(AuthContext);
   return (
     <Tabs
       screenOptions={{
@@ -33,17 +33,45 @@ const TabLayout = () => {
         options={{
           title: 'Home',
           tabBarIcon: () => <Ionicons name="home" color="#FFF0CE" size={22} />,
+          headerLeft: () => (
+            <Link href="/" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <Ionicons
+                    name="lock-open-outline"
+                    size={25}
+                    color="#ffffff"
+                    style={{ marginLeft: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+          ),
           headerTitle: () => <Header />,
           headerStyle: {
             backgroundColor: '#0C356A',
             height: 120,
           },
+          headerRight: () => (
+              <Pressable
+              onPress={() => signOut()}
+              >
+                {({ pressed }) => (
+                  <Ionicons
+                    name="exit-outline"
+                    size={25}
+                    color="#ffffff"
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+          )
         }}
       />
       <Tabs.Screen
         name="customer/index"
         options={{
-          title: 'Customer',
+          title: 'Clientes',
           tabBarIcon: () => <Ionicons name="people" color='#FFF0CE' size={22} />,
           headerLeft: () => (
             <Link href="/" asChild>
@@ -52,7 +80,7 @@ const TabLayout = () => {
                   <Ionicons
                     name="arrow-back"
                     size={30}
-                    color="#FFF0CE"
+                    color="#ffffff"
                     style={{ marginLeft: 15, opacity: pressed ? 0.5 : 1 }}
                   />
                 )}
@@ -69,7 +97,7 @@ const TabLayout = () => {
       <Tabs.Screen
         name="order/index"
         options={{
-          title: 'Order',
+          title: 'Ordens',
           tabBarIcon: () => <Ionicons name="construct" color='#FFF0CE' size={22} />,
           headerLeft: () => (
             <Link href="/" asChild>
@@ -78,7 +106,7 @@ const TabLayout = () => {
                   <Ionicons
                   name="arrow-back"
                     size={30}
-                    color="#FFF0CE"
+                    color="#ffffff"
                     style={{ marginLeft: 15, opacity: pressed ? 0.5 : 1 }}
                   />
                 )}
@@ -90,20 +118,6 @@ const TabLayout = () => {
             backgroundColor: '#0C356A',
             height: 120,
           },
-          headerRight: () => (
-            <Link href="/" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color="#FFF0CE"
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          )
         }}
       />
     </Tabs>

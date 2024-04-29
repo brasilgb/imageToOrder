@@ -7,6 +7,7 @@ import {
   Modal,
   TouchableOpacity,
   Dimensions,
+  Keyboard,
 } from "react-native";
 import React, { useContext, useState } from "react";
 import { Formik } from "formik";
@@ -24,8 +25,7 @@ interface SignInProps {
 }
 
 const SignIn = () => {
-  const [loading, setLoading] = useState(false);
-  const { signIn, showModal } = useContext(AuthContext);
+  const { signIn, loading, loginError } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
 
   const onsubmit = async (values: SignInProps, { resetForm }: any) => {
@@ -33,11 +33,12 @@ const SignIn = () => {
       email: values.email,
       password: values.password,
     });
+    Keyboard.dismiss();
   };
 
   return (
     <>
-      <Loading visible={showModal} />
+      <Loading visible={loading} />
       <View className="flex-1 items-center justify-center bg-megb-blue-primary">
         <View className="my-16">
           <Image
@@ -63,7 +64,12 @@ const SignIn = () => {
             errors,
             isValid,
           }) => (
-            <View className="bg-gray-50 px-8 py-10 w-10/12 rounded-lg">
+            <View className="bg-gray-50 px-3 py-10 w-11/12 rounded-lg">
+              {loginError &&
+                <View className="p-2 flex-row items-center justify-center">
+                  <Text className="text-lg font-medium text-red-500">{loginError}</Text>
+                </View>
+              }
               <View className="mt-2">
                 <Text className="label-form">E-mail</Text>
                 <TextInput
@@ -118,7 +124,7 @@ const SignIn = () => {
 
               <View className="mt-6">
                 <Pressable
-                  className={`${!isValid ? "bg-gray-200" : "bg-megb-yellow-primary"} px-8 py-3 rounded-full flex-row justify-center`}
+                  className={`${!isValid ? "bg-gray-200" : "bg-megb-yellow-primary"} px-8 py-4 rounded-full flex-row justify-center shadow-md shadow-gray-700`}
                   onPress={handleSubmit as any}
                 >
                   <Text

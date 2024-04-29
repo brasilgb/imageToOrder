@@ -97,7 +97,7 @@ const Order = () => {
           </View>
 
           {dataOrder &&
-            <ListOrder data={dataOrder} url="customer" />
+            <ListOrder data={dataOrder} url="order" />
           }
         </View>
       </View>

@@ -74,11 +74,21 @@ function RootLayoutNav() {
   }, [router, onSetUser]);
   return (
     <AuthProvider>
-      <Stack>
+      <Stack
+      screenOptions={{
+        headerShown: false,
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        presentation: 'card',
+        animationTypeForReplace: 'push',
+        animation: 'slide_from_left',
+        // animationDuration: 5000
+      }}
+      >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="signin" options={{ headerShown: false }} />
-        <Stack.Screen name="upload" options={{ presentation: 'modal', headerShown: false }} />
-        <Stack.Screen name="information" options={{ presentation: 'modal', headerShown: false }} />
+        <Stack.Screen name="upload" />
+        <Stack.Screen name="information" />
       </Stack>
     </AuthProvider>
   );

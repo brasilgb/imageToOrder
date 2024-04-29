@@ -20,8 +20,8 @@ const ListOrder = (props: OrderProps) => {
             <View key={idx} className="flex-row items-center justify-start mt-2 gap-2 bg-white p-3 rounded-md border border-gray-300">
               <Text className="text-lg font-bold text-megb-blue-secundary">{order.id}</Text>
               <Text className="flex-1 text-lg font-semibold text-gray-500">{order.equipamento} - {order.modelo}</Text>
-              <Ionicons name='information-circle' size={28} color="#0174BE" onPress={() => { router.push({ pathname: "/information", params: { order: order.id } }) }} />
-              <Ionicons name='camera' size={28} color="#0174BE" onPress={() => { router.push({ pathname: "/upload", params: { order: order.id, url: props.url } }) }} />
+              <Ionicons name='information-circle' size={28} color="#0174BE" onPress={() => { router.push({ pathname: "/information", params: { order: order.id, url: props.url }})}} />
+              <Ionicons name='camera' size={28} color="#0174BE" onPress={() => { router.push({ pathname: "/upload", params: { order: order.id, url: props.url }})}} />
             </View>
           ))}
         </View>
