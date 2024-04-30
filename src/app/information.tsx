@@ -46,7 +46,7 @@ const Information = () => {
                 <ScrollView>
                     <View className='bg-white m-4 rounded-md border border-gray-300 p-3 flex-col gap-2'>
                         {dataOrder.map((order: any, idx: number) => (
-                            <>
+                            <View key={idx}>
                                 <View className='flex-row'>
                                     <Text className='text-xl font-bold text-megb-blue-secundary mr-2'>Recebimento: </Text>
                                     <Text className='text-xl font-medium'>{moment(order.created_at).format("DD/MM/YYYY HH:mm")}</Text>
@@ -71,7 +71,7 @@ const Information = () => {
                                     <Text className='text-xl font-bold text-megb-blue-secundary mr-2'>Serviço executado: </Text>
                                     <Text className='text-xl font-medium'>{(order.detalhes)}</Text>
                                 </View>
-                            </>
+                            </View>
                         ))}
                     </View>
                 </ScrollView>

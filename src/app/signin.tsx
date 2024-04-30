@@ -42,8 +42,8 @@ const SignIn = () => {
       <View className="flex-1 items-center justify-center bg-megb-blue-primary">
         <View className="my-16">
           <Image
-            source={require("@/assets/images/logosolar.png")}
-            className="w-80 h-16"
+            source={require("@/assets/images/megb.png")}
+            className="w-60 h-14"
           />
         </View>
         <Formik

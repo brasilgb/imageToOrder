@@ -116,7 +116,7 @@ const Upload = () => {
 						<View key={idx} className='bg-megb-blue-secundary p-2'>
 							<Image
 								className="w-24 h-24"
-								source={{ uri: `http://172.16.1.67:8080/storage/ordens/${order}/${img.imagem}` }}
+								source={{ uri: `http://192.168.3.9/storage/ordens/${order}/${img.imagem}` }}
 							/>
 						</View>
 					))}

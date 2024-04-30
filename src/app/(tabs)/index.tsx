@@ -3,15 +3,17 @@ import React, { useContext, useEffect, useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { AuthContext } from '@/contexts/Auth'
 import apisos from "@/services/apisos"
+import Loading from '@/components/Loading'
 
 type Props = {}
 
 const Home = (props: Props) => {
-  const { user } = useContext(AuthContext);
+  const { user, loading, setLoading } = useContext(AuthContext);
   const [dataOrder, setDataOrder] = useState<any>([])
 
   useEffect(() => {
     const getDataOrder = async () => {
+      setLoading(true);
       await apisos.get('allorder')
         .then((res) => {
           const { result } = res.data;
@@ -19,19 +21,14 @@ const Home = (props: Props) => {
         })
         .catch((err) => {
           console.log(err);
-        })
+        }).finally(() => setLoading(false));
     };
     getDataOrder();
   }, []);
-/*
-		"numorder": 4,
-		"numabertas": 0,
-		"numgerados": 1,
-		"numaprovados": 1,
-		"numconcluidosca": 1,
-		"numconcluidoscn": 1
-*/
+
   return (
+    <>
+    <Loading visible={loading} />
     <View className="flex-1 items-center justify-start px-4">
       <StatusBar style="light" />
       <View className="py-8 flex-col items-center">
@@ -71,6 +68,7 @@ const Home = (props: Props) => {
         </View>
       </View>
     </View>
+    </>
   )
 }
 

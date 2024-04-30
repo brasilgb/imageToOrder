@@ -3,7 +3,7 @@ import { View, Image } from "react-native"
 const Header = () => {
     return (
       <View>
-        <Image className="h-10 w-52" source={require('@/assets/images/logosolar.png')} />
+        <Image className="h-10 w-36" source={require('@/assets/images/megb.png')} />
       </View>
     )
   }
