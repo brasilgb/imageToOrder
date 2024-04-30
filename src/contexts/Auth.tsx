@@ -55,7 +55,7 @@ export default function AuthProvider({ children }: AuthProps) {
                 };
                 localStorage(udata);
                 setUser(udata);
-                router.push('/(tabs)/');
+                router.replace('/(tabs)/');
             })
             .catch((err) => {
                 console.log(err); 
@@ -97,6 +97,7 @@ export default function AuthProvider({ children }: AuthProps) {
                 clientData,
                 setClientData,
                 signIn,
+                setLoginError,
                 loginError,
                 signOut
             }}

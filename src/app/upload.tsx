@@ -12,7 +12,6 @@ const Upload = () => {
 	const { order, url } = useLocalSearchParams();
     const height = StatusBar.currentHeight;
 	const [loading, setLoading] = useState<boolean>(false);
-	const [images, setImages] = useState<any[]>([]);
 	const [imageView, setImageView] = useState<any[]>([]);
 
 	const getPermission = async () => {
@@ -116,7 +115,7 @@ const Upload = () => {
 						<View key={idx} className='bg-megb-blue-secundary p-2'>
 							<Image
 								className="w-24 h-24"
-								source={{ uri: `http://192.168.3.9/storage/ordens/${order}/${img.imagem}` }}
+								source={{ uri: `${process.env.EXPO_PUBLIC_API_IP}/storage/ordens/${order}/${img.imagem}` }}
 							/>
 						</View>
 					))}

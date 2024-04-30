@@ -9,13 +9,14 @@ import {
   Dimensions,
   Keyboard,
 } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { Formik } from "formik";
 import { StatusBar } from "expo-status-bar";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import Loading from "@/components/Loading";
 import { AuthContext } from "@/contexts/Auth";
 import signinsc from "@/schemas/signinsc";
+import { useFocusEffect } from "expo-router";
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
@@ -25,9 +26,14 @@ interface SignInProps {
 }
 
 const SignIn = () => {
-  const { signIn, loading, loginError } = useContext(AuthContext);
+  const { signIn, loading, setLoginError, loginError } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
 
+  useFocusEffect(
+    useCallback(() => {
+      setLoginError("");
+    }, []));
+    
   const onsubmit = async (values: SignInProps, { resetForm }: any) => {
     await signIn({
       email: values.email,
@@ -43,7 +49,7 @@ const SignIn = () => {
         <View className="my-16">
           <Image
             source={require("@/assets/images/megb.png")}
-            className="w-60 h-14"
+            className="w-48 h-16"
           />
         </View>
         <Formik

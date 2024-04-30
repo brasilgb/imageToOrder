@@ -43,38 +43,40 @@ const Information = () => {
                         <Text className='text-5xl uppercase font-bold text-megb-yellow-primary mt-4'>{order}</Text>
                     </View>
                 </View>
-                <ScrollView>
-                    <View className='bg-white m-4 rounded-md border border-gray-300 p-3 flex-col gap-2'>
-                        {dataOrder.map((order: any, idx: number) => (
-                            <View key={idx}>
-                                <View className='flex-row'>
-                                    <Text className='text-xl font-bold text-megb-blue-secundary mr-2'>Recebimento: </Text>
-                                    <Text className='text-xl font-medium'>{moment(order.created_at).format("DD/MM/YYYY HH:mm")}</Text>
+                {!loading &&
+                    <ScrollView>
+                        <View className='bg-white m-4 rounded-md border border-gray-300 p-3 flex-col gap-2'>
+                            {dataOrder.map((order: any, idx: number) => (
+                                <View key={idx}>
+                                    <View className='flex-row'>
+                                        <Text className='text-xl font-bold text-megb-blue-secundary mr-2'>Recebimento: </Text>
+                                        <Text className='text-xl font-medium'>{moment(order.created_at).format("DD/MM/YYYY HH:mm")}</Text>
+                                    </View>
+                                    <View className='flex-row'>
+                                        <Text className='text-xl font-bold text-megb-blue-secundary mr-2'>Equipamento: </Text>
+                                        <Text className='text-xl font-medium'>{(order.equipamento)}</Text>
+                                    </View>
+                                    <View className='flex-row'>
+                                        <Text className='text-xl font-bold text-megb-blue-secundary mr-2'>Modelo: </Text>
+                                        <Text className='text-xl font-medium'>{(order.modelo)}</Text>
+                                    </View>
+                                    <View className='flex-row'>
+                                        <Text className='text-xl font-bold text-megb-blue-secundary mr-2'>Status: </Text>
+                                        <Text className='text-xl font-medium'>{statusOrdemByValue(order.status)}</Text>
+                                    </View>
+                                    <View className='flex-col'>
+                                        <Text className='text-xl font-bold text-megb-blue-secundary mr-2'>Defeito: </Text>
+                                        <Text className='text-xl font-medium'>{(order.defeito)}</Text>
+                                    </View>
+                                    <View className='flex-col'>
+                                        <Text className='text-xl font-bold text-megb-blue-secundary mr-2'>Serviço executado: </Text>
+                                        <Text className='text-xl font-medium'>{(order.detalhes)}</Text>
+                                    </View>
                                 </View>
-                                <View className='flex-row'>
-                                    <Text className='text-xl font-bold text-megb-blue-secundary mr-2'>Equipamento: </Text>
-                                    <Text className='text-xl font-medium'>{(order.equipamento)}</Text>
-                                </View>
-                                <View className='flex-row'>
-                                    <Text className='text-xl font-bold text-megb-blue-secundary mr-2'>Modelo: </Text>
-                                    <Text className='text-xl font-medium'>{(order.modelo)}</Text>
-                                </View>
-                                <View className='flex-row'>
-                                    <Text className='text-xl font-bold text-megb-blue-secundary mr-2'>Status: </Text>
-                                    <Text className='text-xl font-medium'>{statusOrdemByValue(order.status)}</Text>
-                                </View>
-                                <View className='flex-col'>
-                                    <Text className='text-xl font-bold text-megb-blue-secundary mr-2'>Defeito: </Text>
-                                    <Text className='text-xl font-medium'>{(order.defeito)}</Text>
-                                </View>
-                                <View className='flex-col'>
-                                    <Text className='text-xl font-bold text-megb-blue-secundary mr-2'>Serviço executado: </Text>
-                                    <Text className='text-xl font-medium'>{(order.detalhes)}</Text>
-                                </View>
-                            </View>
-                        ))}
-                    </View>
-                </ScrollView>
+                            ))}
+                        </View>
+                    </ScrollView>
+                }
             </View>
             <ExpoStatusBar style='light' backgroundColor='#0174BE' />
         </>

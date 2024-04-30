@@ -13,11 +13,10 @@ const Order = () => {
   const [dataOrder, setDataOrder] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     setDataOrder([]);
-  //   }, [])
-  // );
+  useFocusEffect(
+    useCallback(() => {
+      setDataOrder([]);
+    }, []));
 
   const onsubmit = async (values: any, { resetForm }: any) => {
     setLoading(true);
@@ -80,7 +79,7 @@ const Order = () => {
                   <View className="flex-row items-center justify-end">
 
                     <Pressable
-                      className={`${!isValid ? "bg-gray-200" : "bg-megb-yellow-primary"} px-8 py-3 rounded-full`}
+                      className={`${!isValid ? "bg-gray-200" : "bg-megb-yellow-primary"} px-8 py-3 rounded-full shadow-md shadow-gray-700`}
                       onPress={handleSubmit as any}
                     >
                       <Text

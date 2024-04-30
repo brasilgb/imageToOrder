@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import { Keyboard, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import apisos from "@/services/apisos";
 import ListOrder from "@/components/ListOrder";
 import { StatusBar } from "expo-status-bar";
@@ -9,17 +9,18 @@ import clientesc from "@/schemas/clientesc";
 import ListCustomer from "@/components/ListCustomer";
 import { AuthContext } from "@/contexts/Auth";
 import { } from "react-native-safe-area-context";
+import { useFocusEffect } from "expo-router";
 
 const Customer = () => {
   const { showModal, setShowModal, clientData, setClientData } = useContext(AuthContext);
   const [dataOrder, setDataOrder] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     setDataOrder([]);
-  //   }, [])
-  // );
+  useFocusEffect(
+    useCallback(() => {
+      setDataOrder([]);
+      setClientData([]);
+    }, []));
 
   const onsubmit = async ({ resetForm }: any) => {
     setLoading(true);
@@ -83,7 +84,7 @@ const Customer = () => {
 
                   <View className="flex-row items-center justify-end">
                     <Pressable
-                      className={`${!isValid ? "bg-gray-200" : "bg-megb-yellow-primary"} px-8 py-3 rounded-full`}
+                      className={`${!isValid ? "bg-gray-200" : "bg-megb-yellow-primary"} px-8 py-3 rounded-full shadow-md shadow-gray-700`}
                       onPress={handleSubmit as any}
                     >
                       <Text
