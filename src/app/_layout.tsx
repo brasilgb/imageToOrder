@@ -62,28 +62,29 @@ function RootLayoutNav() {
 
   useEffect(() => {
     const verifyUser = async () => {
-  
+
       if (!onSetUser) {
         router.replace("/signin");
-      }else{
+      } else {
         router.replace("/(tabs)/")
       }
- 
+
     };
     verifyUser();
   }, [router, onSetUser]);
   return (
     <AuthProvider>
       <Stack
-      screenOptions={{
-        headerShown: false,
-        gestureEnabled: true,
-        gestureDirection: 'horizontal',
-        presentation: 'card',
-        animationTypeForReplace: 'push',
-        animation: 'slide_from_left',
-        // animationDuration: 5000
-      }}
+      initialRouteName='index'
+        screenOptions={{
+          headerShown: false,
+          gestureEnabled: true,
+          gestureDirection: 'horizontal',
+          presentation: 'card',
+          animationTypeForReplace: 'push',
+          animation: 'slide_from_left',
+          animationDuration: 5000
+        }}
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="signin" options={{ headerShown: false }} />

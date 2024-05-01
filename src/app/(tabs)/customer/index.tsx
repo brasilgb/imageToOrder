@@ -18,13 +18,12 @@ const Customer = () => {
 
   useFocusEffect(
     useCallback(() => {
-      setDataOrder([]);
       setClientData([]);
     }, []));
 
   const onsubmit = async ({ resetForm }: any) => {
     setLoading(true);
-    await apisos.get(`/ordercli/${clientData.id}`)
+    await apisos.get(`ordercli/${clientData.id}`)
       .then((res) => {
         setDataOrder(res.data.result);
       }).catch((err) => {

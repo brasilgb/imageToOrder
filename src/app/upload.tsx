@@ -115,7 +115,7 @@ const Upload = () => {
 						<View key={idx} className='bg-megb-blue-secundary p-2'>
 							<Image
 								className="w-24 h-24"
-								source={{ uri: `${process.env.EXPO_PUBLIC_API_IP}/storage/ordens/${order}/${img.imagem}` }}
+								source={{ uri: `${process.env.EXPO_PUBLIC_SERVER_IP}/storage/ordens/${order}/${img.imagem}` }}
 							/>
 						</View>
 					))}

@@ -13,14 +13,9 @@ const Order = () => {
   const [dataOrder, setDataOrder] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  useFocusEffect(
-    useCallback(() => {
-      setDataOrder([]);
-    }, []));
-
   const onsubmit = async (values: any, { resetForm }: any) => {
     setLoading(true);
-    await apisos.get(`/order/${values.order}`)
+    await apisos.get(`order/${values.order}`)
       .then((res) => {
         setDataOrder(res.data.result);
       }).catch((err) => {
