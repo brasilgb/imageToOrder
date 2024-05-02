@@ -12,7 +12,9 @@ const TabLayout = () => {
 const {signOut} = useContext(AuthContext);
   return (
     <Tabs
+
       screenOptions={{
+        tabBarShowLabel: false,
         tabBarInactiveTintColor: "#FFF0CE",
         tabBarInactiveBackgroundColor: '#0C356A',
         tabBarActiveTintColor: '#FFC436',
@@ -32,7 +34,7 @@ const {signOut} = useContext(AuthContext);
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: () => <Ionicons name="home" color="#FFF0CE" size={22} />,
+          tabBarIcon: ({focused}) => <Ionicons name="home" color={focused ? "#FFC436" : "#FFF"} size={22} />,
           headerLeft: () => (
             <Link href="/" asChild>
               <Pressable>
@@ -72,7 +74,7 @@ const {signOut} = useContext(AuthContext);
         name="customer/index"
         options={{
           title: 'Clientes',
-          tabBarIcon: () => <Ionicons name="people" color='#FFF0CE' size={22} />,
+          tabBarIcon: ({focused}) => <Ionicons name="people" color={focused ? "#FFC436" : "#FFF"} size={22} />,
           headerLeft: () => (
             <Link href="/" asChild>
               <Pressable>
@@ -98,7 +100,7 @@ const {signOut} = useContext(AuthContext);
         name="order/index"
         options={{
           title: 'Ordens',
-          tabBarIcon: () => <Ionicons name="construct" color='#FFF0CE' size={22} />,
+          tabBarIcon: ({focused}) => <Ionicons name="construct" color={focused ? "#FFC436" : "#FFF"} size={22} />,
           headerLeft: () => (
             <Link href="/" asChild>
               <Pressable>

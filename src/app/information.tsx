@@ -40,7 +40,10 @@ const Information = () => {
                     </Link>
                     <View className='py-4 flex-col items-center'>
                         <Text className='text-xl uppercase font-bold text-megb-yellow-secundary'>Informações da ordem de serviço</Text>
-                        <Text className='text-5xl uppercase font-bold text-megb-yellow-primary mt-4'>{order}</Text>
+                        <View className='flex-row items-end'>
+                            <Text className='text-2xl font-bold text-gray-50 mr-2 pb-3'>Nº</Text>
+                            <Text className='text-6xl uppercase font-bold text-megb-yellow-primary mt-4'>{order}</Text>
+                        </View>
                     </View>
                 </View>
                 {!loading &&
