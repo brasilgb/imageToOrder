@@ -34,7 +34,7 @@ const {signOut} = useContext(AuthContext);
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({focused}) => <Ionicons name="home" color={focused ? "#FFC436" : "#FFF"} size={22} />,
+          tabBarIcon: ({focused}) => <Ionicons name="home" color={focused ? "#FFC436" : "#FFF"} size={focused ? 30 : 25} />,
           headerLeft: () => (
             <Link href="/" asChild>
               <Pressable>
@@ -74,7 +74,7 @@ const {signOut} = useContext(AuthContext);
         name="customer/index"
         options={{
           title: 'Clientes',
-          tabBarIcon: ({focused}) => <Ionicons name="people" color={focused ? "#FFC436" : "#FFF"} size={22} />,
+          tabBarIcon: ({focused}) => <Ionicons name="people" color={focused ? "#FFC436" : "#FFF"} size={focused ? 30 : 25} />,
           headerLeft: () => (
             <Link href="/" asChild>
               <Pressable>
@@ -100,7 +100,7 @@ const {signOut} = useContext(AuthContext);
         name="order/index"
         options={{
           title: 'Ordens',
-          tabBarIcon: ({focused}) => <Ionicons name="construct" color={focused ? "#FFC436" : "#FFF"} size={22} />,
+          tabBarIcon: ({focused}) => <Ionicons name="construct" color={focused ? "#FFC436" : "#FFF"} size={focused ? 30 : 25} />,
           headerLeft: () => (
             <Link href="/" asChild>
               <Pressable>
