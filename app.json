@@ -9,7 +9,8 @@
     "userInterfaceStyle": "automatic",
     "androidStatusBar": {
       "backgroundColor": "#0C356A",
-      "translucent": false
+      "translucent": false,
+      "style": "light"
     },
     "splash": {
       "image": "./src/assets/images/splash.png",
@@ -17,7 +18,9 @@
       "backgroundColor": "#0C356A",
       "style": "light"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -42,6 +45,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": "http://localhost:8000/"
+      },
+      "eas": {
+        "projectId": "51665316-ed2f-4e2a-b629-29c38e8323f4"
+      }
     }
   }
 }

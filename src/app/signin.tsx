@@ -144,6 +144,9 @@ const SignIn = () => {
             </View>
           )}
         </Formik>
+      <View className="py-2">
+      <Text className="text-sm text-megb-yellow-secundary">v{process.env.EXPO_PUBLIC_APP_VERSION}</Text>
+      </View>
         <StatusBar style="light" />
       </View>
     </>
