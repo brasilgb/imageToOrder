@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "imageToOrder",
-    "slug": "imageToOrder",
+    "name": "megb",
+    "slug": "megb",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
@@ -9,14 +9,12 @@
     "userInterfaceStyle": "automatic",
     "androidStatusBar": {
       "backgroundColor": "#0C356A",
-      "translucent": false,
-      "style": "light"
+      "translucent": false
     },
     "splash": {
       "image": "./src/assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#0C356A",
-      "style": "light"
+      "backgroundColor": "#0C356A"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -28,7 +26,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#0C356A"
-      }
+      },
+      "package": "com.andersonbrodrigues.megb"
     },
     "web": {
       "bundler": "metro",
@@ -51,7 +50,7 @@
         "origin": "http://localhost:8000/"
       },
       "eas": {
-        "projectId": "51665316-ed2f-4e2a-b629-29c38e8323f4"
+        "projectId": "4e282cc3-d490-490a-9873-c4226830a369"
       }
     }
   }
